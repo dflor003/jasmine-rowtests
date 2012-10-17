@@ -13,7 +13,7 @@ This [Jasmine JS](https://github.com/pivotal/jasmine) plugin allows you to test 
 
 Creating row tests is pretty straight forward via the global `given(...)` function and chaining that onto an `it(params)` function. jasmine-rowtests supports two main ways of specifying row tests. For simple, one-paramter row tests, you can pass a single array to the `given(...)` function that contains one item per row as in the following example:
 
-```javascript
+```js
     describe('My module', function() {
         
         given([
@@ -31,7 +31,7 @@ Creating row tests is pretty straight forward via the global `given(...)` functi
 
 To create row tests for multi-parameter specs, pass an array with one array per row of parameters as in the following example:
 
-```javascript
+```js
     describe('My module', function() {
         
         given([
@@ -45,4 +45,19 @@ To create row tests for multi-parameter specs, pass an array with one array per 
         });
         
     });
+```
+
+This will generate one spec per row in your row test such as the following:
+
+```
+    My module
+        given (null) - should all be falsy
+        given (undefined) - should all be falsy
+        given ('') - should all be falsy
+        given (0) - should all be falsy
+        given (false) - should all be falsy
+        given (true, false) - should all be greater than
+        given (5, 0) - should all be greater than
+        given (true, 0) - should all be greater than
+        given ('test', '') - should all be greater than
 ```
