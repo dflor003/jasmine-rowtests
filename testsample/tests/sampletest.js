@@ -16,7 +16,7 @@
 		[true, 0],
 		['test', '']
 	])
-	.it('should all be greater than', function(first, second) {
+	.it('should be greater than', function(first, second) {
 		expect(first).toBeGreaterThan(second);
 	});
 		

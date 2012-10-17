@@ -40,7 +40,7 @@ To create row tests for multi-parameter specs, pass an array with one array per 
             [true, 0],
             ['test', '']
         ])
-        .it('should all be greater than', function(first, second) {
+        .it('should be greater than', function(first, second) {
             expect(first).toBeGreaterThan(second);
         });
         
@@ -51,13 +51,13 @@ This will generate one spec per row in your row test such as the following:
 
 ```
     My module
-        given (null) - should all be falsy
-        given (undefined) - should all be falsy
-        given ('') - should all be falsy
-        given (0) - should all be falsy
-        given (false) - should all be falsy
-        given (true, false) - should all be greater than
-        given (5, 0) - should all be greater than
-        given (true, 0) - should all be greater than
-        given ('test', '') - should all be greater than
+        given (null) - should be falsy
+        given (undefined) - should be falsy
+        given ('') - should be falsy
+        given (0) - should be falsy
+        given (false) - should be falsy
+        given (true, false) - should be greater than
+        given (5, 0) - should be greater than
+        given (true, 0) - should be greater than
+        given ('test', '') - should be greater than
 ```
