@@ -34,11 +34,11 @@
             for (var i = 0; i < params.length; i++) {
                 var value = params[i];
                 results.push(
-					typeof value === 'undefined' ? 'undefined'
-						: value === null ? 'null'
-							: typeof value === 'function' ? 'function(){...}'
-								: typeof value === 'string' ? "'" + value + "'"
-									: value.toString());
+                    typeof value === 'undefined' ? 'undefined'
+                        : value === null ? 'null'
+                            : typeof value === 'function' ? 'function(){...}'
+                                : typeof value === 'string' ? "'" + value + "'"
+                                    : value.toString());
             }
             return results.join(', ');
         }
@@ -47,8 +47,8 @@
             it: function (description, func) {
                 for (var i = 0; i < testData.length; i++) {
                     var currentData = testData[i] != null && testData[i].push && testData[i].length > 0 ? testData[i] : [testData[i]],
-					    currentSpecName = getSpecName(description, currentData),
-					    functionWithData = getTestFunction(func, currentData);
+                        currentSpecName = getSpecName(description, currentData),
+                        functionWithData = getTestFunction(func, currentData);
 
                     global.it(currentSpecName, functionWithData);
                 }

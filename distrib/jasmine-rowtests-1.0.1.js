@@ -42,18 +42,27 @@
             }
             return results.join(', ');
         }
+        
+        function runForEachDataItem(description, func, action) {
+            for (var i = 0; i < testData.length; i++) {
+                var currentData = testData[i] != null && testData[i].push && testData[i].length > 0 ? testData[i] : [testData[i]],
+                    currentSpecName = getSpecName(description, currentData),
+                    functionWithData = getTestFunction(func, currentData);
+
+                action(currentSpecName, functionWithData);
+            }
+        }
 
         return {
             it: function (description, func) {
-                for (var i = 0; i < testData.length; i++) {
-                    var currentData = testData[i] != null && testData[i].push && testData[i].length > 0 ? testData[i] : [testData[i]],
-                        currentSpecName = getSpecName(description, currentData),
-                        functionWithData = getTestFunction(func, currentData);
-
-                    global.it(currentSpecName, functionWithData);
-                }
+                runForEachDataItem(description, func, function (specName, funcWithData) {
+                    global.it(specName, funcWithData);
+                });
             },
             xit: function (description, func) {
+                runForEachDataItem(description, func, function (specName, funcWithData) {
+                    global.xit(specName, funcWithData);
+                });
             }
         };
     };
